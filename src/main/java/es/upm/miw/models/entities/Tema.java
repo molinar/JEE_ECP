@@ -1,7 +1,5 @@
 package es.upm.miw.models.entities;
 
-import javax.persistence.Id;
-
 public class Tema {
     public static final String TABLE = "tema";
 
@@ -52,14 +50,15 @@ public class Tema {
 
 	@Override
 	public boolean equals(Object obj) {
-		// TODO Auto-generated method stub
-		return super.equals(obj);
-	}
+		assert obj != null;
+        Tema other = (Tema) obj;
+        return id.equals(other.id) && nombre.equals(other.nombre)
+                && pregunta.equals(other.pregunta);
+    }
 
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
-		return super.toString();
+		return "Tema [id=" + id + ", nombre=" + nombre + ", pregunta=" + pregunta + "]";
 	}
     
     
