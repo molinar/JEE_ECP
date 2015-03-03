@@ -21,7 +21,7 @@ public class Tema {
     public Tema(Integer id, String nombre, String pregunta){
     	this.id = id;
     	this.nombre = nombre;
-    	this.pregunta = pregunta;
+    	this.pregunta = pregunta; 
     }
 
 	public Integer getId() {
