@@ -11,7 +11,7 @@ import es.upm.miw.models.daos.VotacionDao;
 
 public class DaoJpaFactory extends DaoFactory{
 	
-	private static final String PERSISTENCE_UNIT = "votaciones";
+	private static final String PERSISTENCE_UNIT = "JEE_ECP";
 
 	private static EntityManagerFactory entityManagerFactory = Persistence
             .createEntityManagerFactory(PERSISTENCE_UNIT);
