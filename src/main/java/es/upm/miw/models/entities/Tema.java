@@ -57,9 +57,24 @@ public class Tema {
 	public boolean equals(Object obj) {
 		assert obj != null;
         Tema other = (Tema) obj;
-        return id.equals(other.id) && nombre.equals(other.nombre)
-                && pregunta.equals(other.pregunta);
+        boolean result;
+        
+        if (this.nombre == null){
+        	result = other.nombre == null;
+        }else{
+        	result = other.nombre != null && this.nombre.equals(other.nombre);
+        }
+        return result && nombre.equals(other.nombre);
     }
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+        int result = 1;
+        result = prime * result + ((nombre == null) ? 0: nombre.hashCode());
+        result = prime * result + ((pregunta == null) ? 0: pregunta.hashCode()); 
+        return result;
+	}
 
 	@Override
 	public String toString() {
