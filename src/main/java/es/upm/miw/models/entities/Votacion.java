@@ -2,6 +2,10 @@ package es.upm.miw.models.entities;
 
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import es.upm.miw.models.utils.NivelEstudios;
 
@@ -9,7 +13,9 @@ public class Votacion {
 	public static final String TABLE = "votacion";
 	
 	public static final String ID = "ID";
-
+	
+    @Id
+    @GeneratedValue
     private Integer id;
     
     public static final String IP_USUARIO = "IP_USUARIO";
@@ -27,6 +33,8 @@ public class Votacion {
 	
 	public static final String TEMA = "ID_TEMA";
 	
+	@ManyToOne
+	@JoinColumn
 	private Tema tema;
 
 	public Integer getId() {
