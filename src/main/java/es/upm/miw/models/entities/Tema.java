@@ -1,10 +1,15 @@
 package es.upm.miw.models.entities;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 public class Tema {
     public static final String TABLE = "tema";
 
     public static final String ID = "ID";
-
+    
+    @Id
+    @GeneratedValue
     private Integer id;
     
     public static final String NOMBRE = "NOMBRE";
