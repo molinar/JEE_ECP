@@ -8,13 +8,6 @@ public class TemaDaoJpaTest {
 	
 	private TemaDao dao = DaoJpaFactory.getFactory().getTemaDao();
 	
-	private TemaDaoJpaTestData data;
-	
-	@Before
-	public voud init(){
-		data = new TemaDaoJpaTest();
-	} 
-	
 	
 
 }
