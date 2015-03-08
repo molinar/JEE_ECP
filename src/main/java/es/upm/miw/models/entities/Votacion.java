@@ -65,8 +65,8 @@ public class Votacion {
 		return valoracion;
 	}
 
-	public void setValoracion(Integer valoración) {
-		this.valoracion = valoración;
+	public void setValoracion(Integer valoracion) {
+		this.valoracion = valoracion;
 	}
 
 	public Tema getTema() {
