@@ -9,6 +9,9 @@ public class TemaDaoJpaTest {
 	
 	private TemaDao dao = DaoJpaFactory.getFactory().getTemaDao();
 	
+	@Before
+	
+	
 	@Test
 	public void testCreateTema(){
 		
