@@ -23,8 +23,7 @@ public class Tema {
     public Tema(){	
     }
     
-    public Tema(Integer id, String nombre, String pregunta){
-    	this.id = id;
+    public Tema(String nombre, String pregunta){
     	this.nombre = nombre;
     	this.pregunta = pregunta; 
     }
