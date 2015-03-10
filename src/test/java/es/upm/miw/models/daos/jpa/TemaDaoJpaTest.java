@@ -25,7 +25,7 @@ public class TemaDaoJpaTest {
 	
 	@Before
 	public void init(){
-	    this.tema = new Tema("Tema 1", "Pregunta 1"); //No se genera el id automático, mirar
+	    this.tema = new Tema("Tema 1", "Pregunta 1");
 	    dao.create(this.tema);
 	}
 	
