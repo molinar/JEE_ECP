@@ -1,8 +1,10 @@
 package es.upm.miw.models.entities;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+@Entity
 public class Tema {
     public static final String TABLE = "tema";
 
