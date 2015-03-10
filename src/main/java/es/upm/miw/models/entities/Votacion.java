@@ -1,5 +1,6 @@
 package es.upm.miw.models.entities;
 
+import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
@@ -9,6 +10,7 @@ import javax.persistence.ManyToOne;
 
 import es.upm.miw.models.utils.NivelEstudios;
 
+@Entity
 public class Votacion {
 	public static final String TABLE = "votacion";
 
