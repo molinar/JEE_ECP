@@ -12,7 +12,7 @@ public class TemaDaoJpa extends GenericDaoJpa<Tema, Integer> implements TemaDao 
 		// TODO Auto-generated constructor stub
 	}
 
-    @Override //Comprobar
+    @Override //Revisar, algo va mal
     public void deleteById(Integer id) {
         Tema tema = this.read(id);
         if(tema != null){
