@@ -27,7 +27,7 @@ public class Votacion {
 	public static final String NIVEL_ESTUDIOS = "NIVEL_ESTUDIOS";
 
 	@Enumerated(EnumType.STRING)
-	private NivelEstudios nivelStudios;
+	private NivelEstudios nivelEstudios;
 
 	public static final String VALORACION = "VALORACION";
 
@@ -38,6 +38,16 @@ public class Votacion {
 	@ManyToOne
 	@JoinColumn
 	private Tema tema;
+	
+	public Votacion(){
+	}
+	    
+	public Votacion(String ipUsuario, NivelEstudios nivelEstudios, Integer valoracion, Tema tema){
+	    this.ipUsuario = ipUsuario;
+	    this.nivelEstudios = nivelEstudios;
+	    this.valoracion = valoracion;
+	    this.tema = tema;
+	}
 
 	public Integer getId() {
 		return id;
@@ -56,11 +66,11 @@ public class Votacion {
 	}
 
 	public NivelEstudios getNivelStudios() {
-		return nivelStudios;
+		return nivelEstudios;
 	}
 
-	public void setNivelStudios(NivelEstudios nivelStudios) {
-		this.nivelStudios = nivelStudios;
+	public void setNivelStudios(NivelEstudios nivelEstudios) {
+		this.nivelEstudios = nivelEstudios;
 	}
 
 	public Integer getValoracion() {
@@ -85,7 +95,7 @@ public class Votacion {
 		Votacion other = (Votacion) obj;
 
 		return ipUsuario.equals(other.ipUsuario)
-				&& nivelStudios.equals(other.nivelStudios)
+				&& nivelEstudios.equals(other.nivelEstudios)
 				&& tema.equals(other.tema);
 	}
 
@@ -94,7 +104,7 @@ public class Votacion {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((ipUsuario == null) ? 0 : ipUsuario.hashCode());
-		result = prime * result	+ ((nivelStudios == null) ? 0 : nivelStudios.hashCode());
+		result = prime * result	+ ((nivelEstudios == null) ? 0 : nivelEstudios.hashCode());
 		result = prime * result + valoracion;
 		result = prime * result + ((tema == null) ? 0 : tema.hashCode());
 		return result;
@@ -103,7 +113,7 @@ public class Votacion {
 	@Override
 	public String toString() {
 		return "Votacion [id=" + id + ", ip usuario=" + ipUsuario
-				+ ", nivel de estudios=" + nivelStudios + ", valoracion="
+				+ ", nivel de estudios=" + nivelEstudios + ", valoracion="
 				+ valoracion + ", id tema=" + tema.getId() + "]";
 	}
 }
