@@ -17,14 +17,14 @@ public class VotacionDaoJpa extends GenericDaoJpa<Votacion, Integer> implements 
 		super(Votacion.class);
 		// TODO Auto-generated constructor stub
 	}
-
+	
 	@Override
-	public void deleteVotosTema(Tema tema) {
+	public void deleteVotosTema(Tema tema) { //Comprobar
 		CriteriaBuilder criteria = entityManager.getCriteriaBuilder();
 		CriteriaDelete<Votacion> delete = criteria.createCriteriaDelete(Votacion.class);
-		Root e  = delete.from(Votacion.class);
-		delete.where(criteria);
-		
+		Root<Votacion> e  = delete.from(Votacion.class);
+		delete.where(criteria.equal(e.get("tema"),tema));
+		this.entityManager.createQuery(delete).executeUpdate();
 	}
 
 }
