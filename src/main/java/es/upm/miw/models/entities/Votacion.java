@@ -36,7 +36,7 @@ public class Votacion {
 
 	public static final String TEMA = "ID_TEMA";
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn
 	private Tema tema;
 
