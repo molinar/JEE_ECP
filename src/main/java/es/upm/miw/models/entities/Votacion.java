@@ -1,5 +1,6 @@
 package es.upm.miw.models.entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -35,7 +36,7 @@ public class Votacion {
 
 	public static final String TEMA = "ID_TEMA";
 
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn
 	private Tema tema;
 
