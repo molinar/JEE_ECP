@@ -23,7 +23,7 @@ public class VotacionDaoJpa extends GenericDaoJpa<Votacion, Integer> implements 
 		CriteriaBuilder criteria = entityManager.getCriteriaBuilder();
 		CriteriaDelete<Votacion> delete = criteria.createCriteriaDelete(Votacion.class);
 		Root e  = delete.from(Votacion.class);
-		//delete.where(criteria.equal(tema.getId(), (Tema)e.get("tema").get));
+		delete.where(criteria);
 		
 	}
 
