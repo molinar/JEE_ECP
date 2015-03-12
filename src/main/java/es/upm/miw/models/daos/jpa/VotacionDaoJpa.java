@@ -12,6 +12,7 @@ import javax.persistence.criteria.Root;
 import es.upm.miw.models.daos.VotacionDao;
 import es.upm.miw.models.entities.Tema;
 import es.upm.miw.models.entities.Votacion;
+import es.upm.miw.models.utils.NivelEstudios;
 
 public class VotacionDaoJpa extends GenericDaoJpa<Votacion, Integer> implements VotacionDao {
 
@@ -42,7 +43,7 @@ public class VotacionDaoJpa extends GenericDaoJpa<Votacion, Integer> implements 
         entityManager.getTransaction().commit();
     }
 
-    @Override//Falta por probar y hacer consulta por nivel de estudios
+    @Override
     public List<Votacion> consultaVotosPorTema(Tema tema) { 
         CriteriaBuilder criteria = entityManager.getCriteriaBuilder();
         CriteriaQuery<Votacion> query = criteria.createQuery(Votacion.class);
@@ -50,5 +51,11 @@ public class VotacionDaoJpa extends GenericDaoJpa<Votacion, Integer> implements 
         query.where(criteria.equal(rootVotacion.get("tema"),tema));
         TypedQuery<Votacion> votacionQuery = entityManager.createQuery(query);
         return votacionQuery.getResultList();
+    }
+
+    @Override
+    public double mediaVotosPorTemaNivelEstudio(Tema tema, NivelEstudios nivelEstudios) {
+        // TODO Auto-generated method stub
+        return 0;
     }
 }
