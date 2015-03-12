@@ -42,8 +42,8 @@ public class VotacionDaoJpa extends GenericDaoJpa<Votacion, Integer> implements 
         entityManager.getTransaction().commit();
     }
 
-    @Override
-    public List<Votacion> consultaVotosPorTema(Tema tema) {
+    @Override//Falta por probar y hacer consulta por nivel de estudios
+    public List<Votacion> consultaVotosPorTema(Tema tema) { 
         CriteriaBuilder criteria = entityManager.getCriteriaBuilder();
         CriteriaQuery<Votacion> query = criteria.createQuery(Votacion.class);
         Root<Votacion> rootVotacion = query.from(Votacion.class);
