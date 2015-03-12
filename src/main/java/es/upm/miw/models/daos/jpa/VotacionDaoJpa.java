@@ -59,14 +59,11 @@ public class VotacionDaoJpa extends GenericDaoJpa<Votacion, Integer> implements 
         CriteriaBuilder criteria = entityManager.getCriteriaBuilder();
         CriteriaQuery<Double> query = criteria.createQuery(Double.class);
         Root<Votacion> rootVotacion = query.from(Votacion.class);
-        
         query.multiselect(criteria.avg(rootVotacion.<Double>get("valoracion")));    
-            
         Predicate p1 = criteria.equal(rootVotacion.get("tema"),tema);
         Predicate p2 = criteria.equal(rootVotacion.get("nivelEstudios"), nivelEstudios);
         Predicate predicate = criteria.and(p1,p2);
         query.where(predicate);
-
         TypedQuery<Double> doubleQuery = entityManager.createQuery(query);
         return doubleQuery.getSingleResult();
         
