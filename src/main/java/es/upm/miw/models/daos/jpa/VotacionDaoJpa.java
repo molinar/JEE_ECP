@@ -1,5 +1,7 @@
 package es.upm.miw.models.daos.jpa;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaDelete;
@@ -38,5 +40,11 @@ public class VotacionDaoJpa extends GenericDaoJpa<Votacion, Integer> implements 
         entityManager.getTransaction().begin();
         entityManager.createQuery(delete).executeUpdate();
         entityManager.getTransaction().commit();
+    }
+
+    @Override
+    public List<Votacion> consultaVotosPorTema(Tema tema) {
+        // TODO Auto-generated method stub
+        return null;
     }
 }
