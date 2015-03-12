@@ -77,8 +77,9 @@ public class TemaDaoJpaTest {
 	}
 	
 	@After
-	public void after(){ //Mirar cómo borrar las tablas;
-        DaoJpaFactory.prepareFactoryWithDropAndCreateTables();
+	public void after(){ 
+	    votacionDao.deleteTodosVotos();
+	    dao.deleteTodosTemas();
 	}
 	
 
