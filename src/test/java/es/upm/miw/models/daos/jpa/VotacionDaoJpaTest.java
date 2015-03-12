@@ -21,6 +21,7 @@ public class VotacionDaoJpaTest {
     
     private Tema tema;
     private Votacion v1, v2;
+    private Votacion v4;
     
     @BeforeClass 
     public static void beforeClass(){
@@ -34,8 +35,10 @@ public class VotacionDaoJpaTest {
         temaDao.create(this.tema);
         this.v1 = new Votacion("ip1", NivelEstudios.EDUCACION_PRIMARIA, 3, tema);
         this.v2 = new Votacion("ip2", NivelEstudios.ESTUDIOS_DOCTORADO, 5, tema);
+        this.v4 = new Votacion("ip4", NivelEstudios.EDUCACION_PRIMARIA, 2, tema);
         votacionDao.create(v1);
         votacionDao.create(v2);
+        votacionDao.create(v4);
     }
     
     @Test
@@ -65,12 +68,20 @@ public class VotacionDaoJpaTest {
     
     @Test
     public void testFindAll() {
-        assertEquals(2, votacionDao.findAll().size());
+        assertEquals(3, votacionDao.findAll().size());
     }
     
     @Test
     public void testConsultaVotosPorTema(){     
-            assertEquals(2, votacionDao.consultaVotosPorTema(this.tema).size());
+        assertEquals(3, votacionDao.consultaVotosPorTema(this.tema).size());
+    }
+
+    
+    @Test
+    public void testMediaVotosPorTemaNivelEstudio(){//Mirar en el caso de que no haya votos para un nivel de estudios
+        assertEquals(2.5, votacionDao.mediaVotosPorTemaNivelEstudio(this.tema, NivelEstudios.EDUCACION_PRIMARIA), 1e-5);
+        assertEquals(5.0, votacionDao.mediaVotosPorTemaNivelEstudio(this.tema, NivelEstudios.ESTUDIOS_DOCTORADO), 1e-5);
+        //assertEquals(0.0, votacionDao.mediaVotosPorTemaNivelEstudio(this.tema, NivelEstudios.ESTUDIOS_UNIVERSITARIOS), 1e-5);
     }
     
     @After
