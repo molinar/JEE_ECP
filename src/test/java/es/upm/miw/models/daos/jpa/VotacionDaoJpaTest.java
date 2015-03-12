@@ -68,6 +68,11 @@ public class VotacionDaoJpaTest {
         assertEquals(2, votacionDao.findAll().size());
     }
     
+    @Test
+    public void testConsultaVotosPorTema(){
+        
+    }
+    
     @After
     public void after(){ 
         votacionDao.deleteTodosVotos();
