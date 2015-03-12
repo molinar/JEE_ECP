@@ -20,10 +20,13 @@ public class VotacionDaoJpa extends GenericDaoJpa<Votacion, Integer> implements 
 	
 	@Override
 	public void deleteVotosTema(Tema tema) { 
-		CriteriaBuilder criteria = entityManager.getCriteriaBuilder();
+	    entityManager = DaoJpaFactory.getEntityManagerFactory().createEntityManager();
+	    CriteriaBuilder criteria = entityManager.getCriteriaBuilder();
 		CriteriaDelete<Votacion> delete = criteria.createCriteriaDelete(Votacion.class);
 		Root<Votacion> e  = delete.from(Votacion.class);
-		delete.where(criteria.equal(e.get("tema"),tema)); 
+		delete.where(criteria.equal(e.get("tema"),tema));
+		entityManager.getTransaction().begin();
 		this.entityManager.createQuery(delete).executeUpdate();
+		entityManager.getTransaction().commit();
 	}
 }
