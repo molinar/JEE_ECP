@@ -29,4 +29,14 @@ public class VotacionDaoJpa extends GenericDaoJpa<Votacion, Integer> implements 
 		this.entityManager.createQuery(delete).executeUpdate();
 		entityManager.getTransaction().commit();
 	}
+
+    @Override
+    public void deleteTodosVotos() {
+        EntityManager entityManager = DaoJpaFactory.getEntityManagerFactory().createEntityManager();
+        CriteriaBuilder criteria = entityManager.getCriteriaBuilder();
+        CriteriaDelete<Votacion> delete = criteria.createCriteriaDelete(Votacion.class);
+        entityManager.getTransaction().begin();
+        entityManager.createQuery(delete).executeUpdate();
+        entityManager.getTransaction().commit();
+    }
 }
