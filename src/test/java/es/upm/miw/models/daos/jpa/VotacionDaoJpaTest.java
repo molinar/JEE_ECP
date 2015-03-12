@@ -69,8 +69,8 @@ public class VotacionDaoJpaTest {
     }
     
     @Test
-    public void testConsultaVotosPorTema(){
-        
+    public void testConsultaVotosPorTema(){     
+            assertEquals(2, votacionDao.consultaVotosPorTema(this.tema).size());
     }
     
     @After
