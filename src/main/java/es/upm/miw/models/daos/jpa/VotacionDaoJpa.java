@@ -7,6 +7,7 @@ import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaDelete;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
 import es.upm.miw.models.daos.VotacionDao;
@@ -53,9 +54,21 @@ public class VotacionDaoJpa extends GenericDaoJpa<Votacion, Integer> implements 
         return votacionQuery.getResultList();
     }
 
-    @Override
+    @Override//Mirar en el caso de que no haya votos para un nivel de estudios
     public double mediaVotosPorTemaNivelEstudio(Tema tema, NivelEstudios nivelEstudios) {
-        // TODO Auto-generated method stub
-        return 0;
+        CriteriaBuilder criteria = entityManager.getCriteriaBuilder();
+        CriteriaQuery<Double> query = criteria.createQuery(Double.class);
+        Root<Votacion> rootVotacion = query.from(Votacion.class);
+        
+        query.multiselect(criteria.avg(rootVotacion.<Double>get("valoracion")));    
+            
+        Predicate p1 = criteria.equal(rootVotacion.get("tema"),tema);
+        Predicate p2 = criteria.equal(rootVotacion.get("nivelEstudios"), nivelEstudios);
+        Predicate predicate = criteria.and(p1,p2);
+        query.where(predicate);
+
+        TypedQuery<Double> doubleQuery = entityManager.createQuery(query);
+        return doubleQuery.getSingleResult();
+        
     }
 }
