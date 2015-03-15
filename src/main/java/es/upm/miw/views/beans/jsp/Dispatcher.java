@@ -25,7 +25,7 @@ public class Dispatcher extends HttpServlet {
         case "verTemas":
             VerTemasView verTemasView = new VerTemasView();
             request.setAttribute(action, verTemasView);
-            view = action;
+            view = action; 
             break;
         case "verVotos":
             
