@@ -9,5 +9,4 @@ public abstract class ControllerFactory {
 	public abstract VotarController getVotarController();
 	
 	public abstract MostrarVotacionesController getMostrarVotacionesController();	
-
 }
