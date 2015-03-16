@@ -20,7 +20,7 @@ public class Dispatcher extends HttpServlet {
 
 		String view = "home";
 		System.out.println(request.getPathInfo());
-		
+		request.setCharacterEncoding("UTF-8");
 		if (request.getPathInfo() != null) {
 			String action = request.getPathInfo().substring(1);
 			switch (action) {
@@ -55,6 +55,7 @@ public class Dispatcher extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getPathInfo().substring(1);
 		String view = "home";
+		request.setCharacterEncoding("UTF-8");
 		switch (action) {
 		case "votar":
 

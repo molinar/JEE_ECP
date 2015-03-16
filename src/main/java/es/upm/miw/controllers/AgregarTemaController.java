@@ -1,5 +1,9 @@
 package es.upm.miw.controllers;
 
-public class AgregarTemaController {
+import es.upm.miw.models.entities.Tema;
+
+public interface AgregarTemaController {
+
+	void agregarTema(Tema tema);
 
 }
