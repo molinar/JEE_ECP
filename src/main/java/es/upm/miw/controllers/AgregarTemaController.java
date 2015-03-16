@@ -1,5 +1,5 @@
 package es.upm.miw.controllers;
 
-public interface Votar {
+public class AgregarTemaController {
 
 }
