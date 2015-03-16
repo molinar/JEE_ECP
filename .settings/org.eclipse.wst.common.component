@@ -6,6 +6,6 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/webapp"/>
         <property name="java-output-path" value="/JEE_ECP/build/classes"/>
-        <property name="context-root" value="jee"/>
+        <property name="context-root" value="Web"/>
     </wb-module>
 </project-modules>

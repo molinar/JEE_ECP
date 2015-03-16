@@ -9,16 +9,16 @@
 <body>
 	<h1>Home JEE_ECP</h1>
 	<p>
-		<a href="/JEE_ECP/jsp/">Agregar nuevo tema</a>
+		<a href="/Web/jsp/">Agregar nuevo tema</a>
 	</p>
 	<p>
-		<a href="/JEE_ECP/jsp/">Eliminar tema</a>
+		<a href="/Web/jsp/">Eliminar tema</a>
 	</p>
 	<p>
-        <a href="/JEE_ECP/jsp/">Votar</a>
+        <a href="/Web/jsp/">Votar</a>
     </p>
     <p>
-        <a href="/JEE_ECP/jsp/">Ver votación</a>
+        <a href="/Web/jsp/">Ver votación</a>
     </p>
 </body>
 </html>
