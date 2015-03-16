@@ -1,6 +1,6 @@
 package es.upm.miw.controllers;
 
-public interface ControllerFactory {
+public abstract class ControllerFactory {
 	
 	public abstract EliminarTemaController getEliminarTemaController();
 	
