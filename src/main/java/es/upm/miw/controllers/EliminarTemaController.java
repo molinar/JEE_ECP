@@ -1,5 +1,7 @@
 package es.upm.miw.controllers;
 
-public class EliminarTemaController {
+public interface EliminarTemaController {
+    
+    void eliminarTema(Integer id);
 
 }
