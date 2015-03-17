@@ -79,6 +79,8 @@ public class Dispatcher extends HttpServlet {
             agregarTemaView.agregarTema();
             view = "home";
             break;
+        case "eliminarTema":
+            break;        
         }
         this.getServletContext().getRequestDispatcher(PATH_ROOT_VIEW + view + ".jsp")
                 .forward(request, response);
