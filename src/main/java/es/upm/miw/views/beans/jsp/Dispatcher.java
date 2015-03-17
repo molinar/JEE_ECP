@@ -40,16 +40,11 @@ public class Dispatcher extends HttpServlet {
                 request.setAttribute("agregarTema", agregarTemaView);
                 view = action;
                 break;
-                
-/*
-             * case "verVotos":
-             * 
-             * view = action; break;
-             * 
-             * case "borrarTema":
-             * 
-             * view = action; break;
-             */
+            case "mostrarTemasBorrar":
+                MostrarTemasView mostrarTemasView = new MostrarTemasView();
+                request.setAttribute("mostrarTemasBorrar", mostrarTemasView);
+                view = action;
+                break;
             default:
                 view = "home";
             }
