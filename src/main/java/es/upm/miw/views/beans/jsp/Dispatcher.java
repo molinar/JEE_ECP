@@ -40,9 +40,11 @@ public class Dispatcher extends HttpServlet {
                 request.setAttribute("agregarTema", agregarTemaView);
                 view = action;
                 break;
-            case "mostrarTemasBorrar":
+            case "eliminarTema":
                 MostrarTemasView mostrarTemasView = new MostrarTemasView();
+                mostrarTemasView.setControllerFactory(controllerFactory);
                 request.setAttribute("mostrarTemasBorrar", mostrarTemasView);
+                mostrarTemasView.mostrarTemas();
                 view = action;
                 break;
             default:
@@ -70,8 +72,6 @@ public class Dispatcher extends HttpServlet {
             Tema tema = new Tema();
             tema.setNombre(request.getParameter("nombre"));
             tema.setPregunta(request.getParameter("pregunta"));
-            System.out.println(tema.getNombre());
-            System.out.println(request.getParameter("nombre"));
             AgregarTemaView agregarTemaView = new AgregarTemaView();
             agregarTemaView.setControllerFactory(controllerFactory);
             agregarTemaView.setTema(tema);
