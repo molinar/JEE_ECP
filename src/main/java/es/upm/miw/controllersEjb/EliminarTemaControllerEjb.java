@@ -4,7 +4,7 @@ import es.upm.miw.controllers.EliminarTemaController;
 import es.upm.miw.models.daos.TemaDao;
 import es.upm.miw.models.daos.jpa.DaoJpaFactory;
 
-public class EliminarTemaControllerEjb implements EliminarTemaController {
+public class EliminarTemaControllerEjb extends ListarTemasControllerEjb implements EliminarTemaController  {
 
     public static final String CODIGO_AUTORIZACION = "666";
     
@@ -18,5 +18,4 @@ public class EliminarTemaControllerEjb implements EliminarTemaController {
     public boolean autorizar(String codigo) {
         return codigo.equals(CODIGO_AUTORIZACION);
     }
-
 }
