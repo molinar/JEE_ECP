@@ -10,7 +10,7 @@ public class RecopilacionVotos {
 
 	private int numeroVotos;
 
-	private List<RecopilacionMediasTema> recopilacionMediasTema;
+	private List<RecopilacionMedias> recopilacionMediasTema;
 
 	public Tema getTema() {
 		return tema;
@@ -28,12 +28,12 @@ public class RecopilacionVotos {
 		this.numeroVotos = numeroVotos;
 	}
 
-	public List<RecopilacionMediasTema> getRecopilacionMediasTema() {
+	public List<RecopilacionMedias> getRecopilacionMediasTema() {
 		return recopilacionMediasTema;
 	}
 
 	public void setRecopilacionMediasTema(
-			List<RecopilacionMediasTema> recopilacionMediasTema) {
+			List<RecopilacionMedias> recopilacionMediasTema) {
 		this.recopilacionMediasTema = recopilacionMediasTema;
 	}
 }
