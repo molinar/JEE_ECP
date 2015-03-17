@@ -4,7 +4,7 @@ import es.upm.miw.controllers.EliminarTemaController;
 import es.upm.miw.models.daos.TemaDao;
 import es.upm.miw.models.daos.jpa.DaoJpaFactory;
 
-public class EliminarTemaControllerEjb implements EliminarTemaController {//Mirar dónde mostrar temas
+public class EliminarTemaControllerEjb implements EliminarTemaController {
 
     public static final String CODIGO_AUTORIZACION = "666";
     
