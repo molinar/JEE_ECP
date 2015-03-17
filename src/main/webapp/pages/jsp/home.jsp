@@ -9,7 +9,7 @@
 <body>
 	<h1>Home JEE_ECP</h1>
 	<p>
-		<a href="/Web/jsp/">Agregar nuevo tema</a>
+		<a href="/Web/jsp/agregarTema">Agregar nuevo tema</a>
 	</p>
 	<p>
 		<a href="/Web/jsp/">Eliminar tema</a>
