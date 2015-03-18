@@ -30,7 +30,6 @@ public class AgregarTemaView extends ViewBean {
     public String agregarTema() {
         AgregarTemaController agregarTemaController = this.getControllerFactory()
                 .getAgregarTemaController();
-        System.out.println("bean: " + tema.getNombre());
         agregarTemaController.agregarTema(tema);
         LogManager.getLogger(this.getClass().getName()).info("--- Tema creado ---");
         return null;

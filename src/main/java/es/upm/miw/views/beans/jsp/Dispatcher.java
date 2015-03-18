@@ -45,9 +45,6 @@ public class Dispatcher extends HttpServlet {
             	request.setAttribute("autorizar", autorizarView);
             	view = action;
             	break;              
-            case "eliminarTema":      	
-            	
-                break;
             default:
                 view = "home";
             }
@@ -93,7 +90,12 @@ public class Dispatcher extends HttpServlet {
         	}
         	break; 
         case "eliminarTema":
-        	
+        	EliminarTemaView eliminarTemaView = new EliminarTemaView();
+        	eliminarTemaView.setId(Integer.parseInt(request.getParameter("id")));
+        	eliminarTemaView.setControllerFactory(controllerFactory);
+        	request.setAttribute("eliminarTemas", eliminarTemaView);
+        	eliminarTemaView.eliminarTema();
+        	view = "home";
             break;        
         }
         this.getServletContext().getRequestDispatcher(PATH_ROOT_VIEW + view + ".jsp")
