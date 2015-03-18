@@ -15,11 +15,14 @@
     
     <table>
         <c:forEach var="tema" items="${mostrarTemasView.temas}">
+        <form action="/Web/jsp/eliminarTema" method="post">	
+        	<input type="hidden" value=${tema.id} />
             <tr>
                 <td>${tema.nombre}</td>
                 <td>${tema.pregunta}</td>
-                <td>Eliminar</td>
+                <td><input type="submit" value="Eliminar"/></td>
             </tr>
+        </form>
         </c:forEach>
     </table>
     <p>
