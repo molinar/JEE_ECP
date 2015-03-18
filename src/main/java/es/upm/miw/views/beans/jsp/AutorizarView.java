@@ -6,7 +6,7 @@ import es.upm.miw.controllers.EliminarTemaController;
 
 public class AutorizarView extends ViewBean{
 	
-	String codigo;
+	private String codigo;
 
 	public String getCodigo() {
 		return codigo;
@@ -16,9 +16,9 @@ public class AutorizarView extends ViewBean{
 		this.codigo = codigo;
 	}
 
-	public void autorizar() {
+	public boolean autorizar() {
 		EliminarTemaController eliminarTemaController = this.getControllerFactory().getEliminarTemaController();
-		eliminarTemaController.autorizar(codigo);
 		LogManager.getLogger(this.getClass().getName()).info("--- Autorización pedida ---");
+		return eliminarTemaController.autorizar(codigo);
 	}
 }
