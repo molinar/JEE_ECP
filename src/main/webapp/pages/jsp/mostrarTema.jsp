@@ -16,7 +16,7 @@
     <table>
         <c:forEach var="tema" items="${mostrarTemasView.temas}">
         <form action="/Web/jsp/eliminarTema" method="post">	
-        	<input type="hidden" value=${tema.id} />
+        	<input type="hidden" value="${tema.id}" name="id" />
             <tr>
                 <td>${tema.nombre}</td>
                 <td>${tema.pregunta}</td>
