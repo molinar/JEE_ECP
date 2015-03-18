@@ -44,7 +44,9 @@ public class Dispatcher extends HttpServlet {
             	AutorizarView autorizarView = new AutorizarView();
             	request.setAttribute("autorizar", autorizarView);
             	view = action;
-            	break;              
+            	break;   
+            case "votar":
+            	break;
             default:
                 view = "home";
             }
@@ -96,7 +98,9 @@ public class Dispatcher extends HttpServlet {
         	request.setAttribute("eliminarTemas", eliminarTemaView);
         	eliminarTemaView.eliminarTema();
         	view = "home";
-            break;        
+            break;  
+        case "votar":
+        	break;
         }
         this.getServletContext().getRequestDispatcher(PATH_ROOT_VIEW + view + ".jsp")
                 .forward(request, response);
