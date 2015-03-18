@@ -12,7 +12,7 @@
 		<a href="/Web/jsp/agregarTema">Agregar nuevo tema</a>
 	</p>
 	<p>
-		<a href="/Web/jsp/eliminarTema">Eliminar tema</a>
+		<a href="/Web/jsp/autorizar">Eliminar tema</a>
 	</p>
 	<p>
         <a href="/Web/jsp/">Votar</a>

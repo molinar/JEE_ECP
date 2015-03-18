@@ -40,12 +40,13 @@ public class Dispatcher extends HttpServlet {
                 request.setAttribute("agregarTema", agregarTemaView);
                 view = action;
                 break;
-            case "eliminarTema":
-                MostrarTemasView mostrarTemasView = new MostrarTemasView();
-                mostrarTemasView.setControllerFactory(controllerFactory);
-                request.setAttribute("mostrarTemasBorrar", mostrarTemasView);
-                mostrarTemasView.mostrarTemas();
-                view = action;
+            case "autorizar":
+            	AutorizarView autorizarView = new AutorizarView();
+            	request.setAttribute("autorizar", autorizarView);
+            	view = action;
+            	break;              
+            case "eliminarTema":      	
+            	
                 break;
             default:
                 view = "home";
@@ -65,9 +66,6 @@ public class Dispatcher extends HttpServlet {
         String view = "home";
         request.setCharacterEncoding("UTF-8");
         switch (action) {
-        case "votar":
-
-            break;
         case "agregarTema":
             Tema tema = new Tema();
             tema.setNombre(request.getParameter("nombre"));
@@ -79,7 +77,23 @@ public class Dispatcher extends HttpServlet {
             agregarTemaView.agregarTema();
             view = "home";
             break;
+        case "autorizar":
+        	AutorizarView autorizarView = new AutorizarView();
+        	autorizarView.setControllerFactory(controllerFactory);
+        	request.setAttribute("autorizar", autorizarView);
+        	autorizarView.setCodigo(request.getParameter("codigo"));
+        	if(autorizarView.autorizar()){
+                MostrarTemasView mostrarTemasView = new MostrarTemasView();
+                mostrarTemasView.setControllerFactory(controllerFactory);
+                request.setAttribute("mostrarTemasBorrar", mostrarTemasView);
+                mostrarTemasView.mostrarTemas();
+            	view = "mostrarTema";
+        	}else{
+        		view = "home";
+        	}
+        	break; 
         case "eliminarTema":
+        	
             break;        
         }
         this.getServletContext().getRequestDispatcher(PATH_ROOT_VIEW + view + ".jsp")
