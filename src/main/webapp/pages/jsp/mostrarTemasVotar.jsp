@@ -14,7 +14,7 @@
     <c:set var="mostrarTemasVotarView" scope="request" value="${mostrarTemasVotar}" />
     
     <table>
-        <form action="/Web/jsp/votar" method="post"> 
+        <form action="/Web/jsp/mostrarFormularioVotacion" method="post"> 
             <tr>
                 <td>
                     <select name= tema>
