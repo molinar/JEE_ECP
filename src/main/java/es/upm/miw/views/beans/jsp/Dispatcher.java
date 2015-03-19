@@ -44,8 +44,16 @@ public class Dispatcher extends HttpServlet {
             	AutorizarView autorizarView = new AutorizarView();
             	request.setAttribute("autorizar", autorizarView);
             	view = action;
-            	break;   
+            	break;
+            case "mostrarTemasVotar":
+                MostrarTemasVotarView mostrarTemasVotarView = new MostrarTemasVotarView();
+                mostrarTemasVotarView.setControllerFactory(controllerFactory);
+                request.setAttribute("mostrarTemasVotar", mostrarTemasVotarView);
+                mostrarTemasVotarView.mostrarTemas();
+                view = action;
+                break;
             case "votar":
+                
             	break;
             default:
                 view = "home";
