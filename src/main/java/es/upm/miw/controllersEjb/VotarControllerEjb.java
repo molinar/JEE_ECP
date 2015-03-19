@@ -16,7 +16,7 @@ public class VotarControllerEjb extends ListarTemasControllerEjb implements Vota
 	}
 
     @Override
-    public Tema getTema(int id) {
+    public Tema getTema(Integer id) {
         TemaDao temaDao = DaoJpaFactory.getFactory().getTemaDao();
         return temaDao.read(id);
     }
