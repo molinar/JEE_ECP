@@ -52,9 +52,6 @@ public class Dispatcher extends HttpServlet {
                 mostrarTemasVotarView.mostrarTemas();
                 view = action;
                 break;
-            case "votar":
-                
-            	break;
             default:
                 view = "home";
             }
@@ -107,6 +104,14 @@ public class Dispatcher extends HttpServlet {
         	eliminarTemaView.eliminarTema();
         	view = "home";
             break;  
+        case "mostrarFormularioVotacion":
+            VotarTemaView votarTemaView = new VotarTemaView();
+            votarTemaView.setControllerFactory(controllerFactory);
+            votarTemaView.setId(Integer.valueOf(request.getParameter("tema")));
+            request.setAttribute("mostrarTema", votarTemaView);
+            votarTemaView.update();
+            view = "votar";
+            break;
         case "votar":
         	break;
         }
