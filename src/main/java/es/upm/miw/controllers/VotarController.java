@@ -7,5 +7,5 @@ public interface VotarController extends ListarTemasController {
 
 	void votar(Votacion votacion);
 
-    Tema getTema();
+    Tema getTema(int id);
 }
