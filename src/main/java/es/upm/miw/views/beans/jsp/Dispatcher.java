@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import es.upm.miw.models.entities.Tema;
+import es.upm.miw.models.entities.Votacion;
+import es.upm.miw.models.utils.NivelEstudios;
 import es.upm.miw.controllers.*;
 import es.upm.miw.controllersEjb.ControllerEjbFactory;
 
@@ -17,15 +19,15 @@ public class Dispatcher extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     private static String PATH_ROOT_VIEW = "/pages/jsp/";
-    
-    private ControllerFactory controllerFactory;    
+
+    private ControllerFactory controllerFactory;
 
     @Override
-	public void init() throws ServletException {
-		controllerFactory = new ControllerEjbFactory();
-	}
+    public void init() throws ServletException {
+        controllerFactory = new ControllerEjbFactory();
+    }
 
-	@Override
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
@@ -36,15 +38,15 @@ public class Dispatcher extends HttpServlet {
             System.out.println(action);
             switch (action) {
             case "agregarTema":
-            	AgregarTemaView agregarTemaView = new AgregarTemaView();
+                AgregarTemaView agregarTemaView = new AgregarTemaView();
                 request.setAttribute("agregarTema", agregarTemaView);
                 view = action;
                 break;
             case "autorizar":
-            	AutorizarView autorizarView = new AutorizarView();
-            	request.setAttribute("autorizar", autorizarView);
-            	view = action;
-            	break;
+                AutorizarView autorizarView = new AutorizarView();
+                request.setAttribute("autorizar", autorizarView);
+                view = action;
+                break;
             case "mostrarTemasVotar":
                 MostrarTemasVotarView mostrarTemasVotarView = new MostrarTemasVotarView();
                 mostrarTemasVotarView.setControllerFactory(controllerFactory);
@@ -82,41 +84,51 @@ public class Dispatcher extends HttpServlet {
             view = "home";
             break;
         case "autorizar":
-        	AutorizarView autorizarView = new AutorizarView();
-        	autorizarView.setControllerFactory(controllerFactory);
-        	request.setAttribute("autorizar", autorizarView);
-        	autorizarView.setCodigo(request.getParameter("codigo"));
-        	if(autorizarView.autorizar()){
+            AutorizarView autorizarView = new AutorizarView();
+            autorizarView.setControllerFactory(controllerFactory);
+            request.setAttribute("autorizar", autorizarView);
+            autorizarView.setCodigo(request.getParameter("codigo"));
+            if (autorizarView.autorizar()) {
                 MostrarTemasView mostrarTemasView = new MostrarTemasView();
                 mostrarTemasView.setControllerFactory(controllerFactory);
                 request.setAttribute("mostrarTemasBorrar", mostrarTemasView);
                 mostrarTemasView.mostrarTemas();
-            	view = "mostrarTema";
-        	}else{
-        		view = "home";
-        	}
-        	break; 
+                view = "mostrarTema";
+            } else {
+                view = "home";
+            }
+            break;
         case "eliminarTema":
-        	EliminarTemaView eliminarTemaView = new EliminarTemaView();
-        	eliminarTemaView.setId(Integer.parseInt(request.getParameter("id")));
-        	eliminarTemaView.setControllerFactory(controllerFactory);
-        	request.setAttribute("eliminarTemas", eliminarTemaView);
-        	eliminarTemaView.eliminarTema();
-        	view = "home";
-            break;  
+            EliminarTemaView eliminarTemaView = new EliminarTemaView();
+            eliminarTemaView.setId(Integer.parseInt(request.getParameter("id")));
+            eliminarTemaView.setControllerFactory(controllerFactory);
+            request.setAttribute("eliminarTemas", eliminarTemaView);
+            eliminarTemaView.eliminarTema();
+            view = "home";
+            break;
         case "mostrarFormularioVotacion":
             VotarTemaView votarTemaView = new VotarTemaView();
             votarTemaView.setControllerFactory(controllerFactory);
             votarTemaView.setId(Integer.valueOf(request.getParameter("tema")));
             request.setAttribute("mostrarTema", votarTemaView);
-            votarTemaView.update();
+            votarTemaView.mostrar();
             view = "votar";
             break;
         case "votar":
-        	break;
+            Votacion votacion = new Votacion();
+            VotarTemaView votarTemaView2 = new VotarTemaView();
+            votarTemaView2.setId(Integer.parseInt(request.getParameter("id")));
+            votarTemaView2.setControllerFactory(controllerFactory);
+            votacion.setNivelStudios(NivelEstudios.valueOf(request.getParameter("nivelEstudios")));
+            votacion.setValoracion(Integer.parseInt(request.getParameter("valoracion")));
+            votacion.setIpUsuario(votarTemaView2.getIpUsuario(request));
+            votarTemaView2.setVotacion(votacion);
+            request.setAttribute("votarTema", votarTemaView2);
+            votarTemaView2.votarTema();
+            view = "home";
+            break;
         }
         this.getServletContext().getRequestDispatcher(PATH_ROOT_VIEW + view + ".jsp")
                 .forward(request, response);
     }
-
 }
