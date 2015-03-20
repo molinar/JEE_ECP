@@ -22,14 +22,14 @@
                 <td>N. Estudios: 
                     <select name="nivelEstudios">
                     <c:forEach var="nivelEstudios" items="${temaVotarView.nivelEstudios}">
-                        <option value="${nivelEstudios}"}>${temaVotarView.nivelEstudios}</option>
+                        <option value="${nivelEstudios}"}>${nivelEstudios}</option>
                     </c:forEach>
                     </select>
                 </td>
                 <td>Valoracion: 
                     <select name="valoracion">
-                    <c:forEach var="num" begin="0" end="10">
-                        <option value="${num}"}>${num}</option>
+                    <c:forEach var="valoracion" items="${temaVotarView.valoracion}">
+                        <option value="${valoracion}"}>${valoracion}</option>
                     </c:forEach>
                     </select>
                 </td>              
