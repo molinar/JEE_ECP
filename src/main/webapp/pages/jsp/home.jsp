@@ -18,7 +18,7 @@
         <a href="/Web/jsp/mostrarTemasVotar">Votar</a>
     </p>
     <p>
-        <a href="/Web/jsp/">Ver votación</a>
+        <a href="/Web/jsp/mostrarVotaciones">Ver votación</a>
     </p>
 </body>
 </html>
