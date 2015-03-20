@@ -59,7 +59,7 @@ public class Dispatcher extends HttpServlet {
                 mostrarVotacionesView.setControllerFactory(controllerFactory);
                 request.setAttribute("mostrarVotos", mostrarVotacionesView);
                 mostrarVotacionesView.mostrarVotos();
-                view = action;
+                view = "mostrarVotaciones";
                 break;
             default:
                 view = "home";
