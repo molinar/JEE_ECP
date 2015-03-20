@@ -12,7 +12,7 @@
         Votar un <b>Tema</b>
     </h2>
     <c:set var="temaVotarView" scope="request" value="${mostrarTema}" />
-    
+     
     <table>
         <form action="/Web/jsp/votar" method="post"> 
             <input type="hidden" value="${temaVotarView.tema.id}" name="id" />
