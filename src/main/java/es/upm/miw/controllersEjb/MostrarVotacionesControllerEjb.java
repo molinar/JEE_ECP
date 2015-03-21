@@ -21,19 +21,20 @@ public class MostrarVotacionesControllerEjb extends ListarTemasControllerEjb imp
 		List<RecopilacionVotos> recopilacionVotos = new ArrayList<RecopilacionVotos>();
 		List<Tema> temas = temaDao.findAll();
 		List<RecopilacionMedias> recopilacionMedias = new ArrayList<RecopilacionMedias>();
-		for(int i=0; i>= temas.size(); i++){
-			RecopilacionVotos votos = new RecopilacionVotos();
-			votos.setTema(temas.get(i));
-			votos.setNumeroVotos(votacionDao.consultaVotosPorTema(temas.get(i)).size());
-			for(NivelEstudios nivelEstudios : NivelEstudios.values()){
-				RecopilacionMedias medias = new RecopilacionMedias();
-				medias.setNivelEstudios(nivelEstudios);
-				medias.setMediaVotos(votacionDao.mediaVotosPorTemaNivelEstudio(temas.get(i), nivelEstudios));
-				recopilacionMedias.add(medias);
-			}
-			votos.setRecopilacionMedias(recopilacionMedias);
-			recopilacionVotos.add(votos);
-		}
-		return recopilacionVotos;
+		//Hacer algo si no hay temas
+	    for(Tema tema : temas){
+	        RecopilacionVotos votos = new RecopilacionVotos();
+	        votos.setTema(tema);
+	        votos.setNumeroVotos(votacionDao.consultaVotosPorTema(tema).size());
+	        for(NivelEstudios nivelEstudios : NivelEstudios.values()){
+	            RecopilacionMedias medias = new RecopilacionMedias();
+	            medias.setNivelEstudios(nivelEstudios);
+	            medias.setMediaVotos(votacionDao.mediaVotosPorTemaNivelEstudio(tema, nivelEstudios));
+	            recopilacionMedias.add(medias);
+	        }
+	        votos.setRecopilacionMedias(recopilacionMedias);
+	        recopilacionVotos.add(votos);
+	    }
+	    return recopilacionVotos;
 	}
 }
