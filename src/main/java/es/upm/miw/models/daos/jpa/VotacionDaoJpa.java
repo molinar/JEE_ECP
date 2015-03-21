@@ -54,7 +54,7 @@ public class VotacionDaoJpa extends GenericDaoJpa<Votacion, Integer> implements 
         return votacionQuery.getResultList();
     }
 
-    @Override//Mirar en el caso de que no haya votos para un nivel de estudios
+    @Override
     public double mediaVotosPorTemaNivelEstudio(Tema tema, NivelEstudios nivelEstudios) {
         CriteriaBuilder criteria = entityManager.getCriteriaBuilder();
         CriteriaQuery<Double> query = criteria.createQuery(Double.class);
