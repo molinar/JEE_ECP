@@ -5,6 +5,10 @@ public class RecopilacionMedias {
 	private NivelEstudios nivelEstudios;
 	
 	private double mediaVotos;
+	
+	public RecopilacionMedias(){
+	    
+	}
 
 	public NivelEstudios getNivelEstudios() {
 		return nivelEstudios;
