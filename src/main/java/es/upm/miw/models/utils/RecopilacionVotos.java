@@ -1,5 +1,6 @@
 package es.upm.miw.models.utils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import es.upm.miw.models.entities.Tema;
@@ -10,7 +11,10 @@ public class RecopilacionVotos {
 
 	private int numeroVotos;
 
-	private List<RecopilacionMedias> recopilacionMedias;
+	private List<RecopilacionMedias> recopilacionMedias = new ArrayList<RecopilacionMedias>();
+	
+	public RecopilacionVotos(){
+	}
 
 	public Tema getTema() {
 		return tema;
