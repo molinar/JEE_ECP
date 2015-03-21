@@ -12,11 +12,26 @@
         Ver <b>Votos</b>
     </h2>
     <c:set var="mostrarVotacionesView" scope="request" value="${mostrarVotos}" />
-    <c:forEach var="votos" items="${mostrarVotacionesView.votos}">>
+    <c:forEach var="votos" items="${mostrarVotacionesView.votos}">
         <table>
             <tr>
-                <td>${votos.tema}</td>
+                <th>Nombre</th>
+                <th>Número de votos</th>
+            </tr>
+            <tr>
+                <td>${votos.tema.nombre}</td>
                 <td>${votos.numeroVotos}</td>
+                <c:forEach var="media" items="${mostrarVotacionesView.votos.medias}">
+                    <tr>
+                       <th>Nivel de estudios</th>
+                       <th>Valoración media</th>
+                    </tr>
+                    <tr>
+                        <td>${media.nivelEstudios}</td>
+                        <td>${media.mediaVotos}</td>
+                    </tr>
+                </c:forEach>
+                <td></td>
             </tr>
         </table>    
     </c:forEach>
