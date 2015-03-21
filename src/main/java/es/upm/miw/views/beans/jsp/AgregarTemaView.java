@@ -10,16 +10,10 @@ import es.upm.miw.models.entities.Tema;
 @ManagedBean
 public class AgregarTemaView extends ViewBean {
 
-    private String errorMsg;
-
     private Tema tema;
 
     public AgregarTemaView() {
         this.tema = new Tema();
-    }
-
-    public String getErrorMsg() {
-        return errorMsg;
     }
 
     public Tema getTema() {

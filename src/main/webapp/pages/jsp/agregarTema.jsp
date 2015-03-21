@@ -15,10 +15,10 @@
 	<form action="/Web/jsp/agregarTema" method="post">
 		<p>
 			Nombre: <input name="nombre" type="text"
-				value="${temaView.tema.nombre}" />${temaView.errorMsg}</p>
+				value="${temaView.tema.nombre}" /></p>
 		<p>
 			Pregunta: <input name="pregunta" type="text"
-				value="${temaView.tema.pregunta}" />${temaView.errorMsg}</p>
+				value="${temaView.tema.pregunta}" /></p>
 		<p>
 			<input type="submit" value="Enviar" />
 		</p>
