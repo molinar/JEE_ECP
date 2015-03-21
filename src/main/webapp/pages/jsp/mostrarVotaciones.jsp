@@ -15,7 +15,7 @@
 		value="${mostrarVotos}" />
 	<c:forEach var="votos" items="${mostrarVotacionesView.votos}">
 		<table>
-			<tr>
+			<tr> 
 				<th>Nombre</th>
 				<th>Número de votos</th>
 				<th>Votación media</th>
