@@ -1,10 +1,13 @@
 package es.upm.miw.views.beans.jsp;
 
+import javax.faces.bean.ManagedBean;
+
 import org.apache.logging.log4j.LogManager;
 
 import es.upm.miw.controllers.AgregarTemaController;
 import es.upm.miw.models.entities.Tema;
 
+@ManagedBean
 public class AgregarTemaView extends ViewBean {
 
     private String errorMsg;
