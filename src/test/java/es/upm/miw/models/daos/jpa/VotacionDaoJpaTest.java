@@ -78,10 +78,10 @@ public class VotacionDaoJpaTest {
 
     
     @Test
-    public void testMediaVotosPorTemaNivelEstudio(){//Mirar en el caso de que no haya votos para un nivel de estudios
+    public void testMediaVotosPorTemaNivelEstudio(){
         assertEquals(2.5, votacionDao.mediaVotosPorTemaNivelEstudio(this.tema, NivelEstudios.EDUCACION_PRIMARIA), 1e-5);
         assertEquals(5.0, votacionDao.mediaVotosPorTemaNivelEstudio(this.tema, NivelEstudios.ESTUDIOS_DOCTORADO), 1e-5);
-        //assertEquals(0.0, votacionDao.mediaVotosPorTemaNivelEstudio(this.tema, NivelEstudios.ESTUDIOS_UNIVERSITARIOS), 1e-5);
+        assertEquals(0.0, votacionDao.mediaVotosPorTemaNivelEstudio(this.tema, NivelEstudios.ESTUDIOS_UNIVERSITARIOS), 1e-5);
     }
     
     @After
