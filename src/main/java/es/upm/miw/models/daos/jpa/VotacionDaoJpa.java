@@ -65,6 +65,9 @@ public class VotacionDaoJpa extends GenericDaoJpa<Votacion, Integer> implements 
         Predicate predicate = criteria.and(p1,p2);
         query.where(predicate);
         TypedQuery<Double> doubleQuery = entityManager.createQuery(query);
+        if (doubleQuery.getSingleResult() == null){
+            return 0.0;
+        }
         return doubleQuery.getSingleResult();
         
     }
