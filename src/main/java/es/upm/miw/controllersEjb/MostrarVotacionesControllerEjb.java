@@ -21,7 +21,6 @@ public class MostrarVotacionesControllerEjb extends ListarTemasControllerEjb imp
 		List<RecopilacionVotos> recopilacionVotos = new ArrayList<RecopilacionVotos>();
 		List<Tema> temas = temaDao.findAll();
 		List<RecopilacionMedias> recopilacionMedias = new ArrayList<RecopilacionMedias>();
-		//Hacer algo si no hay temas
 	    for(Tema tema : temas){
 	        RecopilacionVotos votos = new RecopilacionVotos();
 	        votos.setTema(tema);
