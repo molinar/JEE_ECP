@@ -2,11 +2,14 @@ package es.upm.miw.views.beans.jsp;
 
 import java.util.List;
 
+import javax.faces.bean.ManagedBean;
+
 import org.apache.logging.log4j.LogManager;
 
 import es.upm.miw.controllers.EliminarTemaController;
 import es.upm.miw.models.entities.Tema;
 
+@ManagedBean
 public class MostrarTemasView extends ViewBean {
 
     private List<Tema> temas;
@@ -22,11 +25,12 @@ public class MostrarTemasView extends ViewBean {
         this.temas = temas;
     }
 
-    public void mostrarTemas() {
+    public String mostrarTemas() {
         EliminarTemaController eliminarTemaController = this.getControllerFactory()
                 .getEliminarTemaController();
         temas = eliminarTemaController.listarTemas();
         LogManager.getLogger(this.getClass().getName()).info("--- Temas mostrados ---");
+        return null;
     }
 
 }
