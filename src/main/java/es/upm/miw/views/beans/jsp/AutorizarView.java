@@ -1,9 +1,12 @@
 package es.upm.miw.views.beans.jsp;
 
+import javax.faces.bean.ManagedBean;
+
 import org.apache.logging.log4j.LogManager;
 
 import es.upm.miw.controllers.EliminarTemaController;
 
+@ManagedBean
 public class AutorizarView extends ViewBean {
 
 	private String codigo;
@@ -23,7 +26,15 @@ public class AutorizarView extends ViewBean {
 		EliminarTemaController eliminarTemaController = this
 				.getControllerFactory().getEliminarTemaController();
 		LogManager.getLogger(this.getClass().getName()).info(
-				"--- Autorización pedida ---");
+				"--- AutorizaciÃ³n pedida ---");
 		return eliminarTemaController.autorizar(codigo);
+	}
+
+	public String process(){
+	    if(autorizar()){	    
+	        return "eliminarTema.xhtml";
+	    }else{
+	        return "home.xhtml";
+	    }
 	}
 }
