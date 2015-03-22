@@ -32,7 +32,7 @@ public class AutorizarView extends ViewBean {
 
 	public String process(){
 	    if(autorizar()){	    
-	        return "eliminarTema.xhtml";
+	        return "mostrarTema.xhtml";
 	    }else{
 	        return "home.xhtml";
 	    }
