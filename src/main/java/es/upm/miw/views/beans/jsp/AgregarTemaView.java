@@ -29,6 +29,6 @@ public class AgregarTemaView extends ViewBean {
                 .getAgregarTemaController();
         agregarTemaController.agregarTema(tema);
         LogManager.getLogger(this.getClass().getName()).info("--- Tema creado ---");
-        return null;
+        return "home.xhtml";
     }
 }
