@@ -1,5 +1,6 @@
 package es.upm.miw.models.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -16,10 +17,12 @@ public class Tema {
     
     public static final String NOMBRE = "NOMBRE";
     
+    @Column(unique = true)
     private String nombre;
     
     public static final String PRENGUNTA = "PREGUNTA";
     
+    @Column(unique = true)
     private String pregunta;
     
     public Tema(){	
