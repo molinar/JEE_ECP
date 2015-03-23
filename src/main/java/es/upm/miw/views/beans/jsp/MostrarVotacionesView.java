@@ -26,7 +26,7 @@ public class MostrarVotacionesView extends ViewBean {
     public void mostrarVotos() {
         MostrarVotacionesController mostrarVotacionesController = this.getControllerFactory()
                 .getMostrarVotacionesController();
-        votos = mostrarVotacionesController.listarVotaciones();
+        votos = mostrarVotacionesController.listarVotaciones(); 
         LogManager.getLogger(this.getClass().getName()).info("--- Votos mostrados ---");
     }
 
