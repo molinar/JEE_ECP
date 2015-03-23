@@ -20,7 +20,6 @@ public class MostrarVotacionesControllerEjb extends ListarTemasControllerEjb imp
 		TemaDao temaDao = DaoJpaFactory.getFactory().getTemaDao();
 		List<RecopilacionVotos> recopilacionVotos = new ArrayList<RecopilacionVotos>();
 		List<Tema> temas = temaDao.findAll();
-		List<RecopilacionMedias> recopilacionMedias = new ArrayList<RecopilacionMedias>();
 	    for(Tema tema : temas){
 	        RecopilacionVotos votos = new RecopilacionVotos();
 	        votos.setTema(tema);
@@ -29,9 +28,8 @@ public class MostrarVotacionesControllerEjb extends ListarTemasControllerEjb imp
 	            RecopilacionMedias medias = new RecopilacionMedias();
 	            medias.setNivelEstudios(nivelEstudios);
 	            medias.setMediaVotos(votacionDao.mediaVotosPorTemaNivelEstudio(tema, nivelEstudios));
-	            recopilacionMedias.add(medias);
+	            votos.getRecopilacionMedias().add(medias);
 	        }
-	        votos.setRecopilacionMedias(recopilacionMedias);
 	        recopilacionVotos.add(votos);
 	    }
 	    return recopilacionVotos;
