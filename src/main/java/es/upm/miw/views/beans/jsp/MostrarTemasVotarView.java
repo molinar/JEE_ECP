@@ -1,4 +1,4 @@
-package es.upm.miw.views.beans.jsp;
+package es.upm.miw.views.beans.jsp; 
 
 import java.util.List;
 
