@@ -2,6 +2,7 @@ package es.upm.miw.views.beans.jsp;
 
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 
 import org.apache.logging.log4j.LogManager;
@@ -23,6 +24,11 @@ public class MostrarTemasView extends ViewBean {
 
     public void setTemas(List<Tema> temas) {
         this.temas = temas;
+    }
+    
+    @PostConstruct
+    public void init(){
+        this.mostrarTemas();
     }
 
     public String mostrarTemas() {
