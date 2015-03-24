@@ -6,17 +6,24 @@
 	xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
 	<title>Eliminar tema</title>
-</h:head> 
+</h:head>
 <h:body>
 	<h1>Eliminar tema</h1>
-	<h:dataTable value="#{mostrarTemasView.temas}" var="temas">
+	<h:dataTable value="#{mostrarTemasView.temas}" var="tema">
 		<h:column>
             #{tema.nombre}
         </h:column>
 		<h:column>
             #{tema.pregunta}
         </h:column>
-	</h:dataTable> 
+		<h:column>
+			<h:form id="eliminarTemaView">
+				<h:commandButton value="Eliminar" type="submit" action="#{eliminarTemaView.eliminarTema}" >
+				    <f:param name="id" value="#{tema.id}" />
+				</h:commandButton>
+			</h:form>
+		</h:column>
+	</h:dataTable>
 	<p>
 		<h:link value="Volver a Home" outcome="home"></h:link>
 	</p>
