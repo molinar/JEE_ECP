@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"        
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title>Votar tema</title>
+</h:head>
+<h:body>
+	<h1>Votar tema</h1>
+
+	<h:form>
+		<h:selectOneMenu value="#{mostrarTemasView.id}">
+			<f:selectItems value="#{mostrarTemasView.temas}" var="tema" itemLabel="#{tema.nombre}" itemValue="#{tema.id}" />
+		</h:selectOneMenu>
+		<h:commandButton value="Seleccionar" type="submit" action="#{votarTemaView.mostrar}">
+		    <f:param name="id" value="#{tema.id}" />
+		</h:commandButton>
+	</h:form>
+	<p>
+		<h:link value="Volver a Home" outcome="home"></h:link>
+	</p>
+</h:body>
+</html>
