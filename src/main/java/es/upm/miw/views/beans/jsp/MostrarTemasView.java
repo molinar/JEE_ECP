@@ -36,7 +36,7 @@ public class MostrarTemasView extends ViewBean {
     public void setId(String id) {
         this.id = id;
     }
-
+ 
     @PostConstruct
     public void init() {
         this.mostrarTemas();
