@@ -11,7 +11,7 @@ import es.upm.miw.controllers.EliminarTemaController;
 import es.upm.miw.controllers.VotarController;
 import es.upm.miw.models.entities.Tema;
 
-@ManagedBean
+@ManagedBean 
 public class MostrarTemasView extends ViewBean {
 
     private List<Tema> temas;
