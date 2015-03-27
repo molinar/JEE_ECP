@@ -25,7 +25,7 @@ public class MostrarTemasView extends ViewBean {
     public void setTemas(List<Tema> temas) {
         this.temas = temas;
     }
-    
+     
     @PostConstruct
     public void init(){
         this.mostrarTemas();
