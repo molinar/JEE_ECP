@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.List;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.logging.log4j.LogManager;
@@ -14,20 +16,22 @@ import es.upm.miw.models.entities.Tema;
 import es.upm.miw.models.entities.Votacion;
 import es.upm.miw.models.utils.NivelEstudios;
 
+@ManagedBean
 public class VotarTemaView extends ViewBean {
 
-    public Tema tema;
+    private Tema tema;
+    
+    @ManagedProperty(value = "#{param.id}")
+    private int id;
 
-    public int id;
-
-    public List<NivelEstudios> nivelEstudios = new ArrayList<NivelEstudios>(
+    private List<NivelEstudios> nivelEstudios = new ArrayList<NivelEstudios>(
             EnumSet.allOf(NivelEstudios.class));
 
-    public List<Integer> valoracion = new ArrayList<Integer>();
+    private List<Integer> valoracion = new ArrayList<Integer>();
 
-    public String ipUsuario;
+    private String ipUsuario;
 
-    public Votacion votacion;
+    private Votacion votacion;
 
     public VotarTemaView() {
         this.votacion = new Votacion();
@@ -41,6 +45,10 @@ public class VotarTemaView extends ViewBean {
         this.tema = tema;
     }
 
+    public int getId() {
+        return id;
+    }
+    
     public void setId(int id) {
         this.id = id;
     }
@@ -65,23 +73,23 @@ public class VotarTemaView extends ViewBean {
     }
 
     public String getIpUsuario(HttpServletRequest request) throws UnknownHostException {
-        String ip = request.getHeader("X-Forwarded-For");
-        if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
-            ip = request.getHeader("Proxy-Client-IP");
+        ipUsuario = request.getHeader("X-Forwarded-For");
+        if (ipUsuario == null || ipUsuario.length() == 0 || "unknown".equalsIgnoreCase(ipUsuario)) {
+            ipUsuario = request.getHeader("Proxy-Client-IP");
         }
-        if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
-            ip = request.getHeader("WL-Proxy-Client-IP");
+        if (ipUsuario == null || ipUsuario.length() == 0 || "unknown".equalsIgnoreCase(ipUsuario)) {
+            ipUsuario = request.getHeader("WL-Proxy-Client-IP");
         }
-        if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
-            ip = request.getHeader("HTTP_CLIENT_IP");
+        if (ipUsuario == null || ipUsuario.length() == 0 || "unknown".equalsIgnoreCase(ipUsuario)) {
+            ipUsuario = request.getHeader("HTTP_CLIENT_IP");
         }
-        if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
-            ip = request.getHeader("HTTP_X_FORWARDED_FOR");
+        if (ipUsuario == null || ipUsuario.length() == 0 || "unknown".equalsIgnoreCase(ipUsuario)) {
+            ipUsuario = request.getHeader("HTTP_X_FORWARDED_FOR");
         }
-        if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
-            ip = request.getRemoteAddr();
+        if (ipUsuario == null || ipUsuario.length() == 0 || "unknown".equalsIgnoreCase(ipUsuario)) {
+            ipUsuario = request.getRemoteAddr();
         }
-        return ip;
+        return ipUsuario;
     }
 
     public void setIpUsuario(String ipUsuario) {
@@ -95,18 +103,20 @@ public class VotarTemaView extends ViewBean {
     public void setVotacion(Votacion votacion) {
         this.votacion = votacion;
     }
-
-    public void mostrar() {
+    
+    public String mostrar() {
         VotarController votarController = this.getControllerFactory().getVotarController();
         this.tema = votarController.getTema(id);
+        return "votar.xhtml";
     }
 
-    public void votarTema() {
+    public String votarTema() {
         VotarController votarController = this.getControllerFactory().getVotarController();
         this.tema = votarController.getTema(this.id);
         this.votacion.setTema(this.tema);
         votarController.votar(votacion);
         LogManager.getLogger(this.getClass().getName()).info("--- Votación realizada ---");
+        return "home.xhtml";
     }
 
 }
