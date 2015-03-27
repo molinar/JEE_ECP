@@ -11,8 +11,10 @@ import es.upm.miw.controllers.EliminarTemaController;
 import es.upm.miw.controllers.VotarController;
 import es.upm.miw.models.entities.Tema;
 
-@ManagedBean 
+@ManagedBean
 public class MostrarTemasView extends ViewBean {
+
+    private String id;
 
     private List<Tema> temas;
 
@@ -26,9 +28,17 @@ public class MostrarTemasView extends ViewBean {
     public void setTemas(List<Tema> temas) {
         this.temas = temas;
     }
-     
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     @PostConstruct
-    public void init(){
+    public void init() {
         this.mostrarTemas();
     }
 
@@ -39,7 +49,7 @@ public class MostrarTemasView extends ViewBean {
         LogManager.getLogger(this.getClass().getName()).info("--- Temas mostrados ---");
         return null;
     }
-    
+
     public String mostrarTemasVotar() {
         VotarController votarController = this.getControllerFactory().getVotarController();
         temas = votarController.listarTemas();
