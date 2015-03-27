@@ -40,10 +40,11 @@ public class MostrarTemasView extends ViewBean {
         return null;
     }
     
-    public void mostrarTemasVotar() {
+    public String mostrarTemasVotar() {
         VotarController votarController = this.getControllerFactory().getVotarController();
         temas = votarController.listarTemas();
         LogManager.getLogger(this.getClass().getName()).info("--- Temas mostrados ---");
+        return "votar.xhtml";
     }
 
 }
