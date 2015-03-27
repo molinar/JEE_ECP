@@ -3,6 +3,7 @@ package es.upm.miw.views.beans.jsp;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 
 import org.apache.logging.log4j.LogManager;
@@ -24,6 +25,11 @@ public class MostrarVotacionesView extends ViewBean {
 
     public void setVotos(List<RecopilacionVotos> votos) {
         this.votos = votos;
+    }
+    
+    @PostConstruct
+    public void init() {
+        this.mostrarVotos();
     }
 
     public String mostrarVotos() {
