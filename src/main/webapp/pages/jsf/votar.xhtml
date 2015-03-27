@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"        
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title>Votar tema</title>
+</h:head>
+<h:body>
+	<h1>Votar tema</h1>
+	#{votarTemaView.id}
+    	<h:column>
+            #{votarTemaView.tema.nombre}
+        </h:column>
+		<h:column>
+            #{votarTemaView.tema.pregunta}
+        </h:column>
+		<h:column>
+			<h:form>
+				<h:selectOneMenu value="#{votarTemaView.nivelEstudios}">
+					<f:selectItems value="#{votarTemaView.nivelEstudios}" var="nivelEstudios"
+						itemLabel="#{nivelEstudios}" itemValue="#{nivelEstudios}" />
+				</h:selectOneMenu>
+			</h:form>
+		</h:column>
+		<h:column>
+            <h:form>
+                <h:selectOneMenu value="#{votarTemaView.valoracion}">
+                    <f:selectItems value="#{votarTemaView.valoracion}" var="valoracion"
+                        itemLabel="#{valoracion}" itemValue="#{valoracion}" />
+                </h:selectOneMenu>
+            </h:form>
+        </h:column>
+	<p>
+		<h:link value="Volver a Home" outcome="home"></h:link>
+	</p>
+</h:body>
+</html>
