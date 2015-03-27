@@ -8,6 +8,7 @@ import javax.faces.bean.ManagedBean;
 import org.apache.logging.log4j.LogManager;
 
 import es.upm.miw.controllers.EliminarTemaController;
+import es.upm.miw.controllers.VotarController;
 import es.upm.miw.models.entities.Tema;
 
 @ManagedBean
@@ -37,6 +38,12 @@ public class MostrarTemasView extends ViewBean {
         temas = eliminarTemaController.listarTemas();
         LogManager.getLogger(this.getClass().getName()).info("--- Temas mostrados ---");
         return null;
+    }
+    
+    public void mostrarTemasVotar() {
+        VotarController votarController = this.getControllerFactory().getVotarController();
+        temas = votarController.listarTemas();
+        LogManager.getLogger(this.getClass().getName()).info("--- Temas mostrados ---");
     }
 
 }
