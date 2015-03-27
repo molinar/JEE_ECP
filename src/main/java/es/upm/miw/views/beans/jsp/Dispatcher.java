@@ -48,10 +48,10 @@ public class Dispatcher extends HttpServlet {
                 view = action;
                 break;
             case "mostrarTemasVotar":
-                MostrarTemasVotarView mostrarTemasVotarView = new MostrarTemasVotarView();
+                MostrarTemasView mostrarTemasVotarView = new MostrarTemasView();
                 mostrarTemasVotarView.setControllerFactory(controllerFactory);
                 request.setAttribute("mostrarTemasVotar", mostrarTemasVotarView);
-                mostrarTemasVotarView.mostrarTemas();
+                mostrarTemasVotarView.mostrarTemasVotar();
                 view = action;
                 break;
             case "mostrarVotaciones":
