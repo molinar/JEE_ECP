@@ -6,7 +6,6 @@ import java.util.EnumSet;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.logging.log4j.LogManager;
@@ -21,7 +20,6 @@ public class VotarTemaView extends ViewBean {
 
     private Tema tema;
     
-    @ManagedProperty(value = "#{param.id}")
     private int id;
 
     private List<NivelEstudios> nivelEstudios = new ArrayList<NivelEstudios>(
