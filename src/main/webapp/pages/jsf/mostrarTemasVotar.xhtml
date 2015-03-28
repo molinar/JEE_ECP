@@ -11,11 +11,10 @@
 	<h1>Votar tema</h1>
 
 	<h:form>
-		<h:selectOneMenu value="#{mostrarTemasView.id}">
+		<h:selectOneMenu value="#{votarTemaView.id}">
 			<f:selectItems value="#{mostrarTemasView.temas}" var="tema" itemLabel="#{tema.nombre}" itemValue="#{tema.id}" />
 		</h:selectOneMenu>
 		<h:commandButton value="Seleccionar" type="submit" action="#{votarTemaView.mostrar}">
-		    <f:param name="id" value="#{tema.id}" />
 		</h:commandButton>
 	</h:form>
 	<p>
