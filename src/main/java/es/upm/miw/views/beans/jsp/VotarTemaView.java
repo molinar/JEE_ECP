@@ -6,6 +6,7 @@ import java.util.EnumSet;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.logging.log4j.LogManager;
@@ -19,13 +20,17 @@ import es.upm.miw.models.utils.NivelEstudios;
 public class VotarTemaView extends ViewBean {
 
     private Tema tema;
-    
+
     private int id;
 
     private List<NivelEstudios> nivelEstudios = new ArrayList<NivelEstudios>(
             EnumSet.allOf(NivelEstudios.class));
 
+    private String estudios;
+
     private List<Integer> valoracion = new ArrayList<Integer>();
+
+    private Integer valor;
 
     private String ipUsuario;
 
@@ -46,7 +51,7 @@ public class VotarTemaView extends ViewBean {
     public int getId() {
         return id;
     }
-    
+
     public void setId(int id) {
         this.id = id;
     }
@@ -70,6 +75,22 @@ public class VotarTemaView extends ViewBean {
         this.valoracion = valoracion;
     }
 
+    public Integer getValor() {
+        return valor;
+    }
+
+    public void setValor(Integer valor) {
+        this.valor = valor;
+    }
+
+    public String getEstudios() {
+        return estudios;
+    }
+
+    public void setEstudios(String estudios) {
+        this.estudios = estudios;
+    }
+
     public String getIpUsuario(HttpServletRequest request) throws UnknownHostException {
         ipUsuario = request.getHeader("X-Forwarded-For");
         if (ipUsuario == null || ipUsuario.length() == 0 || "unknown".equalsIgnoreCase(ipUsuario)) {
@@ -89,7 +110,17 @@ public class VotarTemaView extends ViewBean {
         }
         return ipUsuario;
     }
-
+    
+    public String getRemoteAddr() {
+        HttpServletRequest request = (HttpServletRequest) FacesContext
+                .getCurrentInstance().getExternalContext().getRequest();
+        String ipAddress = request.getHeader("X-FORWARDED-FOR");
+        if (ipAddress == null) {
+            ipAddress = request.getRemoteAddr();
+        }
+        return ipAddress;
+    }
+    
     public void setIpUsuario(String ipUsuario) {
         this.ipUsuario = ipUsuario;
     }
@@ -101,20 +132,27 @@ public class VotarTemaView extends ViewBean {
     public void setVotacion(Votacion votacion) {
         this.votacion = votacion;
     }
-    
+
     public String mostrar() {
         VotarController votarController = this.getControllerFactory().getVotarController();
         this.tema = votarController.getTema(id);
         return "votar.xhtml";
     }
 
-    public String votarTema() {
+    public String process() {
+        this.votacion.setNivelStudios(NivelEstudios.valueOf(estudios));
+        this.votacion.setValoracion(valor);
+        this.votacion.setIpUsuario(getRemoteAddr());
+        votarTema();
+        return "home.xhtml";
+    }
+
+    public void votarTema() {
         VotarController votarController = this.getControllerFactory().getVotarController();
         this.tema = votarController.getTema(this.id);
         this.votacion.setTema(this.tema);
         votarController.votar(votacion);
         LogManager.getLogger(this.getClass().getName()).info("--- Votación realizada ---");
-        return "home.xhtml";
     }
 
 }
