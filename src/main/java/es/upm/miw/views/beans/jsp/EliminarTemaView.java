@@ -29,7 +29,7 @@ public class EliminarTemaView extends ViewBean {
                 .getEliminarTemaController();
         eliminarTemaController.eliminarTema(id);
         LogManager.getLogger(this.getClass().getName()).info("--- Tema eliminado ---");
-        return "home.xhtml";
+        return "temaEliminado.xhtml";
     }
 
 }
