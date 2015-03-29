@@ -144,7 +144,7 @@ public class VotarTemaView extends ViewBean {
         this.votacion.setValoracion(valor);
         this.votacion.setIpUsuario(getRemoteAddr());
         votarTema();
-        return "home.xhtml";
+        return "temaVotado.xhtml";
     }
 
     public void votarTema() {
