@@ -34,7 +34,7 @@ public class AutorizarView extends ViewBean {
 	    if(autorizar()){	    
 	        return "mostrarTema.xhtml";
 	    }else{
-	        return "home.xhtml";
+	        return "noAutorizado.xhtml";
 	    }
 	}
 }
