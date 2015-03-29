@@ -102,7 +102,7 @@ public class Dispatcher extends HttpServlet {
                 mostrarTemasView.mostrarTemas();
                 view = "mostrarTema";
             } else {
-                view = "home";
+                view = "noAutorizado";
             }
             break;
         case "eliminarTema":
