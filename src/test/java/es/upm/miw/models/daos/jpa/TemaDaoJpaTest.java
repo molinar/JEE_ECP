@@ -73,7 +73,10 @@ public class TemaDaoJpaTest {
 	@Test
     public void testFindAll() {
 	    dao.create(new Tema("Tema 3", "Pregunta 3"));
-	    assertEquals(2, dao.findAll().size());
+	    dao.create(new Tema("Tema 3", "Pregunta 3"));
+	    dao.create(new Tema("Tema 3", "Pregunta 4"));
+	    dao.create(new Tema("Tema 4", "Pregunta 4"));
+	    assertEquals(3, dao.findAll().size());
 	}
 	
 	@After
