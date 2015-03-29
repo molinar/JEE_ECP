@@ -9,10 +9,10 @@ import es.upm.miw.controllers.EliminarTemaController;
 
 @ManagedBean
 public class EliminarTemaView extends ViewBean {
-
+    
     @ManagedProperty(value = "#{param.id}")
     private int id;
-
+    
     public EliminarTemaView() {
     }
 
