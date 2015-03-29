@@ -88,7 +88,7 @@ public class Dispatcher extends HttpServlet {
             agregarTemaView.setTema(tema);
             request.setAttribute("agregarTema", agregarTemaView);
             agregarTemaView.agregarTema();
-            view = "home";
+            view = "temaAgregado";
             break;
         case "autorizar":
             AutorizarView autorizarView = new AutorizarView();
@@ -111,7 +111,7 @@ public class Dispatcher extends HttpServlet {
             eliminarTemaView.setControllerFactory(controllerFactory);
             request.setAttribute("eliminarTemas", eliminarTemaView);
             eliminarTemaView.eliminarTema();
-            view = "home";
+            view = "temaEliminado";
             break;
         case "mostrarFormularioVotacion":
             VotarTemaView votarTemaView = new VotarTemaView();
@@ -132,7 +132,7 @@ public class Dispatcher extends HttpServlet {
             votarTemaView2.setVotacion(votacion);
             request.setAttribute("votarTema", votarTemaView2);
             votarTemaView2.votarTema();
-            view = "home";
+            view = "temaVotado";
             break;
         }
         this.getServletContext().getRequestDispatcher(PATH_ROOT_VIEW + view + ".jsp")
